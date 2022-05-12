@@ -11,35 +11,32 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         int N = Integer.parseInt(br.readLine());
-        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        arr = new int[N];
-        dp = new Integer[N];
+        arr = new int[N+1];
+        dp = new Integer[N+1];
 
-        for(int i = 0 ; i < N ;i++){
-            arr[i] = Integer.parseInt(st.nextToken());
+        for(int i = 1 ; i <= N ; i++){
+            arr[i] = Integer.parseInt(br.readLine());
+        }
+        dp[0] = 0;
+        dp[1] = arr[1];
+
+        if(N > 1) {
+            dp[2] = arr[2] + arr[1];
+            for(int i = 0 ; i <= N ; i++)
+                stair(i);
         }
 
-        dp[0] = arr[0];
-
-        sum(N-1);
-
-        int max = Integer.MIN_VALUE;
-        for(int i = 0 ; i < N ; i++){
-            max = Math.max(max, dp[i]);
-        }
-
-        System.out.println(max);
+        System.out.println(dp[N]);
 
     }
 
-    public static int sum(int n){
+    public static int stair(int n){
 
         if(dp[n] == null){
-            dp[n] = Math.max(arr[n], sum(n-1) + arr[n]);
+            dp[n] = Math.max(stair(n-3)+arr[n-1], stair(n-2)) + arr[n];
         }
 
         return dp[n];
     }
-
 }
