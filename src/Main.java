@@ -12,29 +12,22 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        arr = new int[N+1];
         dp = new Integer[N+1];
 
-        for(int i = 1 ; i <= N ; i++){
-            arr[i] = Integer.parseInt(br.readLine());
-        }
         dp[0] = 0;
-        dp[1] = arr[1];
+        dp[1] = 1;
 
-        if(N > 1) {
-            dp[2] = arr[2] + arr[1];
-            for(int i = 0 ; i <= N ; i++)
-                stair(i);
-        }
+        pow(N);
 
         System.out.println(dp[N]);
-
     }
-
-    public static int stair(int n){
+    public static int pow(int n){
 
         if(dp[n] == null){
-            dp[n] = Math.max(stair(n-3)+arr[n-1], stair(n-2)) + arr[n];
+            dp[n] = n;
+            for(int i = 1 ; i*i <= n ; i++){
+                dp[n] = Math.min(dp[n],pow(n - i*i)+1 );
+            }
         }
 
         return dp[n];
