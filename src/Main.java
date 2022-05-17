@@ -3,33 +3,40 @@ import java.util.StringTokenizer;
 
 public class Main {
 
-    static int[] arr;
-    static Integer[] dp;
+    static Long[] dp = new Long[101];
+    static StringBuilder sb = new StringBuilder();
 
     public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = Integer.parseInt(br.readLine());
+        int T = Integer.parseInt(br.readLine());
 
-        dp = new Integer[N+1];
+        dp[0] = Long.valueOf(0);
+        dp[1] = dp[2] = dp[3] = Long.valueOf(1);
+        dp[4] = Long.valueOf(2);
 
-        dp[0] = 0;
-        dp[1] = 1;
+        while(T-->0){
+            int N = Integer.parseInt(br.readLine());
 
-        pow(N);
+            if(N >= 5)
+                wave(N);
 
-        System.out.println(dp[N]);
-    }
-    public static int pow(int n){
-
-        if(dp[n] == null){
-            dp[n] = n;
-            for(int i = 1 ; i*i <= n ; i++){
-                dp[n] = Math.min(dp[n],pow(n - i*i)+1 );
-            }
+            sb.append(dp[N] + "\n");
         }
+
+        System.out.println(sb);
+
+    }
+
+    public static long wave(int n){
+
+        if(dp[n] == null)
+            dp[n] = wave(n-1) + wave(n-5);
 
         return dp[n];
     }
+
+
+
 }
