@@ -1,12 +1,15 @@
 import java.io.*;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class Main {
 
     static StringBuilder sb = new StringBuilder();
-    static StringTokenizer st;
+    static long[] arr = new long[100001];
+    static long max = 0;
+    static long index = 0;
 
     public static void main(String[] args) throws Exception {
 
@@ -14,19 +17,30 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        int[] arr = new int[N];
+        HashMap<String, Integer> map = new HashMap<>();
 
         for(int i = 0 ; i < N ; i++){
-            arr[i] = Integer.parseInt(br.readLine());
+            String temp = br.readLine();
+            if(map.containsKey(temp))
+                map.replace(temp,map.get(temp)+1);
+            else
+                map.put(temp,1);
         }
 
-        Arrays.sort(arr);
+        for(String key : map.keySet()){
+//            System.out.println("key : " + key + " value : " + map.get(key));
+            if(max < map.get(key)){
+                max = map.get(key);
+                index = Long.parseLong(key);
 
-        for(int i = 0 ; i < N ; i++){
-            sb.append(arr[i] + "\n");
+            }else if(max == map.get(key)){
+                if(index > Long.parseLong(key)) {
+                    index = Long.parseLong(key);
+                }
+            }
         }
 
-        System.out.println(sb);
+        System.out.println(index);
 
 
     }
