@@ -5,6 +5,7 @@ public class Main {
 
     static StringBuilder sb = new StringBuilder();
     static int[] arr;
+    static boolean flag = false;
 
     public static void main(String[] args) throws Exception {
 
@@ -12,37 +13,34 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        Stack<Integer> stack = new Stack<>();
+        Stack<Character> stack = new Stack<>();
 
         while( N-->0){
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            String command = st.nextToken();
+            char[] ch = br.readLine().toCharArray();
 
-            if(st.hasMoreTokens()){
-                stack.push(Integer.parseInt(st.nextToken()));
-            }else{
-                if(command.equals("pop")){
+            for(int i = 0 ; i < ch.length ; i++){
+                if(ch[i] == '('){
+                    stack.push(ch[i]);
+                }else{
                     if(stack.isEmpty()){
-                        sb.append("-1" + "\n");
-                    }else{
-                        sb.append(stack.pop()+"\n");
-                    }
-                }else if(command.equals("size")){
-                    sb.append(stack.size() + "\n");
-                }else if(command.equals("empty")){
-                    if(stack.isEmpty()){
-                        sb.append("1" + "\n");
-                    }else
-                        sb.append("0" + "\n");
-                }else if(command.equals("top")) {
-                    if(stack.isEmpty()){
-                        sb.append("-1" + "\n");
-                    }else{
-                        sb.append(stack.peek() + "\n");
+                        sb.append("NO\n");
+                        flag = true;
+                        break;
+                    }else {
+                        stack.pop();
+                        continue;
                     }
                 }
             }
 
+            if(stack.isEmpty() && !flag){
+                sb.append("YES\n");
+            }else if(!stack.isEmpty() && !flag)
+                sb.append("NO\n");
+
+            flag = false;
+
+            stack.clear();
         }
 
         System.out.println(sb);
