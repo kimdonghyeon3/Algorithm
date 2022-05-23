@@ -8,13 +8,21 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+        String str = br.readLine();
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        String ab = st.nextToken() + st.nextToken();
-        String cd = st.nextToken() + st.nextToken();
+        String[] arr = new String[str.length()];
 
-        System.out.println(Long.parseLong(ab) + Long.parseLong(cd));
+        for(int i = 0 ; i < str.length() ; i++){
+            arr[i] = str.substring(i,str.length());
+        }
 
+        Arrays.sort(arr);
+
+        for(String s : arr)
+            sb.append(s + "\n");
+
+        System.out.println(sb);
     }
 
 
