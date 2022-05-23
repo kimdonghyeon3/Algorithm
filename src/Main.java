@@ -12,7 +12,7 @@ public class Main {
 
         int N = Integer.parseInt(br.readLine());
 
-        Queue<Integer> q = new LinkedList<>();
+        Deque<Integer> q = new LinkedList<>();
 
         while( N-->0){
 
@@ -21,15 +21,24 @@ public class Main {
             String command = st.nextToken();
 
             if(st.hasMoreTokens()){
-                last_num = Integer.parseInt(st.nextToken());
-                q.add(last_num);
+                if(command.equals("push_front")){
+                    q.addFirst(Integer.parseInt(st.nextToken()));
+                }else{
+                    q.addLast(Integer.parseInt(st.nextToken()));
+                }
             }else{
 
-                if(command.equals("pop")){
+                if(command.equals("pop_front")){
                     if(q.isEmpty()){
                         sb.append("-1\n");
                     }else{
-                        sb.append(q.poll() + "\n");
+                        sb.append(q.pollFirst() + "\n");
+                    }
+                }else if(command.equals("pop_back")){
+                    if(q.isEmpty()){
+                        sb.append("-1\n");
+                    }else{
+                        sb.append(q.pollLast() + "\n");
                     }
                 }else if(command.equals("size")){
                     sb.append(q.size() + "\n");
@@ -43,12 +52,12 @@ public class Main {
                     if(q.isEmpty())
                         sb.append("-1\n");
                     else
-                        sb.append(q.peek() + "\n");
+                        sb.append(q.getFirst() + "\n");
                 }else if(command.equals("back")){
                     if(q.isEmpty())
                         sb.append("-1\n");
                     else
-                        sb.append(last_num + "\n");
+                        sb.append(q.getLast() + "\n");
                 }
             }
 
