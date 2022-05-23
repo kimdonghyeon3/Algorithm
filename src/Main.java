@@ -9,30 +9,11 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        char[] ch = br.readLine().toCharArray();
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        String ab = st.nextToken() + st.nextToken();
+        String cd = st.nextToken() + st.nextToken();
 
-        for(int i = 0 ; i < ch.length ; i++){
-
-            int num = ch[i];
-
-            if(ch[i] >= 65 && ch[i] <= 90){
-                num += 13;
-
-                if (num > 90)
-                    num = 64 + (num - 90);
-
-            }else if(ch[i] >= 97 && ch[i] <= 122){
-                num += 13;
-
-                if (num > 122)
-                    num = 96 + (num - 122);
-            }
-                ch[i] = (char) num;
-        }
-        for(char c : ch){
-            System.out.print(c);
-        }
-
+        System.out.println(Long.parseLong(ab) + Long.parseLong(cd));
 
     }
 
