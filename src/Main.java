@@ -9,21 +9,30 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        char[] ch = br.readLine().toCharArray();
-        int[] arr = new int[26];
+        String str = "";
 
-        for(int i = 0 ; i < arr.length ; i++)
-            arr[i] = -1;
+        while((str=br.readLine()) != null){
 
-        for(int i = 0 ; i < ch.length ; i++){
-            if(arr[ch[i] - 'a'] == -1)
-                arr[ch[i] - 'a'] = i;
+            char[] ch = str.toCharArray();
+            int[] arr = new int[4];
+
+            for(int i = 0 ; i < ch.length ; i++){
+
+                int ascii = (int)ch[i];
+                if(ascii == 32){
+                    arr[3] += 1;
+                }else if( ascii >= 48 && ascii <= 57){
+                    arr[2] += 1;
+                }else if(ascii >= 65 && ascii <= 90 ){
+                    arr[1] += 1;
+                }else{
+                    arr[0] += 1;
+                }
+            }
+
+            System.out.println(arr[0] + " " + arr[1] + " " + arr[2] + " " + arr[3]);
         }
 
-        for(int a : arr)
-            sb.append(a +" ");
-
-        System.out.println(sb);
     }
 
 
