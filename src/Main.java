@@ -9,21 +9,53 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
-        String str = br.readLine();
+        char[] ch = br.readLine().toCharArray();
 
-        String[] arr = new String[str.length()];
+        int N = Integer.parseInt(br.readLine());
 
-        for(int i = 0 ; i < str.length() ; i++){
-            arr[i] = str.substring(i,str.length());
+        Stack<Character> stack_left = new Stack<>();
+        Stack<Character> stack_right = new Stack<>();
+
+        for(int i = 0 ; i < ch.length ; i++){
+            stack_left.push(ch[i]);
         }
 
-        Arrays.sort(arr);
+        for(int i = 0 ; i < N ; i++){
 
-        for(String s : arr)
-            sb.append(s + "\n");
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            String command = st.nextToken();
+
+            if(st.hasMoreTokens()){
+                stack_left.push(st.nextToken().charAt(0));
+            }else{
+                if(command.equals("L")) {
+                    if(!stack_left.isEmpty()){
+                        stack_right.push(stack_left.pop());
+                    }
+                }else if(command.equals("D")){
+                    if(!stack_right.isEmpty()){
+                        stack_left.push(stack_right.pop());
+                    }
+                }else if(command.equals("B")){
+                    if(!stack_left.isEmpty()){
+                        stack_left.pop();
+                    }
+                }
+            }
+        }   //for end
+
+        while(!stack_left.isEmpty()){
+            stack_right.push(stack_left.pop());
+        }
+
+        while(!stack_right.isEmpty())
+            sb.append(stack_right.pop());
 
         System.out.println(sb);
     }
-
-
 }
+
+
+
+
+
