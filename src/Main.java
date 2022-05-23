@@ -12,8 +12,12 @@ public class Main {
         char[] ch = br.readLine().toCharArray();
         int[] arr = new int[26];
 
+        for(int i = 0 ; i < arr.length ; i++)
+            arr[i] = -1;
+
         for(int i = 0 ; i < ch.length ; i++){
-            arr[ch[i] - 'a'] += 1;
+            if(arr[ch[i] - 'a'] == -1)
+                arr[ch[i] - 'a'] = i;
         }
 
         for(int a : arr)
