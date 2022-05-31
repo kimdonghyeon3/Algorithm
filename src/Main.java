@@ -9,11 +9,18 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int A = Integer.parseInt(st.nextToken());
-        int B = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(br.readLine());
 
-        System.out.println(max(A,B) + "\n" + min(A,B));
+        while(N-->0){
+            StringTokenizer st = new StringTokenizer(br.readLine());
+            int A = Integer.parseInt(st.nextToken());
+            int B = Integer.parseInt(st.nextToken());
+
+            sb.append(min(A,B) + "\n");
+        }
+
+
+        System.out.println(sb);
     }
 
     public static int max(int A, int B){
