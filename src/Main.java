@@ -9,25 +9,28 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int N = Integer.parseInt(br.readLine());
 
-        while(N-->0){
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int A = Integer.parseInt(st.nextToken());
-            int B = Integer.parseInt(st.nextToken());
 
-            sb.append(min(A,B) + "\n");
-        }
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
+        long a = Long.parseLong(st.nextToken());
+        long b = Long.parseLong(st.nextToken());
+
+        long result = max(a,b);
+
+
+        for(int i = 1 ; i <= result ; i++)
+            sb.append("1");
 
         System.out.println(sb);
+
     }
 
-    public static int max(int A, int B){
+    public static long max(long A, long B){
 
-        int max = Math.max(A,B);
-        int min = Math.min(A,B);
-        int result = 1;
+        long max = Math.max(A,B);
+        long min = Math.min(A,B);
+        long result = 1;
         while(min != 0){
             result = max % min;
             max = min;
@@ -36,7 +39,7 @@ public class Main {
         return max;
     }
 
-    public static int min(int a, int b){
+    public static long min(int a, int b){
 
         return (a*b)/max(a, b);
     }
