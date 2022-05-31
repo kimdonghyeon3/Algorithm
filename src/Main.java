@@ -8,48 +8,34 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        
-        char[] ch = br.readLine().toCharArray();
 
-        int N = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        int N = Integer.parseInt(st.nextToken());
+        int K = Integer.parseInt(st.nextToken());
 
-        Stack<Character> stack_left = new Stack<>();
-        Stack<Character> stack_right = new Stack<>();
+        Queue<Integer> q = new LinkedList<>();
 
-        for(int i = 0 ; i < ch.length ; i++){
-            stack_left.push(ch[i]);
+        for(int i = 1 ; i <= N ; i++){
+            q.add(i);
         }
 
-        for(int i = 0 ; i < N ; i++){
+        int cnt = 1;
 
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            String command = st.nextToken();
+        sb.append("<");
 
-            if(st.hasMoreTokens()){
-                stack_left.push(st.nextToken().charAt(0));
+        while(!q.isEmpty()){
+
+            if(cnt == K){
+                sb.append(q.poll() + ", ");
+                cnt = 1;
             }else{
-                if(command.equals("L")) {
-                    if(!stack_left.isEmpty()){
-                        stack_right.push(stack_left.pop());
-                    }
-                }else if(command.equals("D")){
-                    if(!stack_right.isEmpty()){
-                        stack_left.push(stack_right.pop());
-                    }
-                }else if(command.equals("B")){
-                    if(!stack_left.isEmpty()){
-                        stack_left.pop();
-                    }
-                }
+                q.add(q.poll());
+                cnt++;
             }
-        }   //for end
-
-        while(!stack_left.isEmpty()){
-            stack_right.push(stack_left.pop());
         }
 
-        while(!stack_right.isEmpty())
-            sb.append(stack_right.pop());
+        sb.setLength(sb.length()-2);
+        sb.append(">");
 
         System.out.println(sb);
     }
