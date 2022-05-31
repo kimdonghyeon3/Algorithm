@@ -12,15 +12,26 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         int A = Integer.parseInt(st.nextToken());
         int B = Integer.parseInt(st.nextToken());
-        int C = Integer.parseInt(st.nextToken());
 
-        sb.append( (A+B)%C + "\n");
-        sb.append( ((A%C) + (B%C))%C + "\n");
-        sb.append( (A*B)%C + "\n");
-        sb.append( ((A%C)*(B%C))%C + "\n");
+        System.out.println(max(A,B) + "\n" + min(A,B));
+    }
 
+    public static int max(int A, int B){
 
-        System.out.println(sb);
+        int max = Math.max(A,B);
+        int min = Math.min(A,B);
+        int result = 1;
+        while(min != 0){
+            result = max % min;
+            max = min;
+            min = result;
+        }
+        return max;
+    }
+
+    public static int min(int a, int b){
+
+        return (a*b)/max(a, b);
     }
 }
 
