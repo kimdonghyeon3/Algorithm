@@ -44,7 +44,6 @@ public class Main {
             max = min;
             min = temp;
         }
-
         return max;
     }
 }
