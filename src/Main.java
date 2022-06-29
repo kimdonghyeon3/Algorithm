@@ -12,27 +12,21 @@ public class Main {
         StringTokenizer st = new StringTokenizer(br.readLine());
         String str = "";
 
-        int N = Integer.parseInt(st.nextToken());
+        String N = st.nextToken();
         int B = Integer.parseInt(st.nextToken());
+        long num = 0;
 
-        ArrayList<Character> list = new ArrayList<>();
+        for(int i = N.length() -1  ; i >= 0 ; i--){
 
-        while( N > 0 ){
-
-            if(N % B >= 10){
-                list.add((char)(N % B - 10 + 'A'));
+            if((int)(N.charAt(i)) >= 58){
+                num += ((int)N.charAt(i) - 55)*Math.pow(B,N.length() - 1 - i);
             }else{
-                list.add((char)(N % B + '0'));
+                num += ((int)N.charAt(i) - 48)*Math.pow(B,N.length() - 1 - i);
             }
-
-            N = N/B;
         }
 
-        for(int i = list.size() -1 ; i >= 0 ; i--){
-            sb.append(list.get(i));
-        }
+        System.out.println(num);
 
-        System.out.println(sb);
 
     }
 
