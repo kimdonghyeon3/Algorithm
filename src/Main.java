@@ -9,43 +9,33 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int T = Integer.parseInt(br.readLine());
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        String str = "";
 
-        while(T-->0){
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int n = Integer.parseInt(st.nextToken());
+        int N = Integer.parseInt(st.nextToken());
+        int B = Integer.parseInt(st.nextToken());
 
-            int arr[] = new int[n];
+        ArrayList<Character> list = new ArrayList<>();
 
-            for(int i = 0 ; i < arr.length ; i++){
-                arr[i] = Integer.parseInt(st.nextToken());
+        while( N > 0 ){
+
+            if(N % B >= 10){
+                list.add((char)(N % B - 10 + 'A'));
+            }else{
+                list.add((char)(N % B + '0'));
             }
 
-            long sum = 0;
+            N = N/B;
+        }
 
-            for(int i = 0 ; i < arr.length ; i++){
-                for(int j = i+1 ; j < arr.length ; j++){
-                    sum += gcd(arr[i],arr[j]);
-                }
-            }
-            sb.append(sum + "\n");
+        for(int i = list.size() -1 ; i >= 0 ; i--){
+            sb.append(list.get(i));
         }
 
         System.out.println(sb);
+
     }
 
-    public static int gcd(int a, int b){
-        int max = a >= b ? a : b;
-        int min = a >= b ? b : a;
-        int temp;
-
-        while(min != 0){
-            temp = max % min;
-            max = min;
-            min = temp;
-        }
-        return max;
-    }
 }
 
 
