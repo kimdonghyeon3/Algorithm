@@ -9,25 +9,30 @@ public class Main {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        String str = "";
+        String str = br.readLine();
 
-        String N = st.nextToken();
-        int B = Integer.parseInt(st.nextToken());
-        long num = 0;
+        int cnt = 0;
+        int sum = 0;
 
-        for(int i = N.length() -1  ; i >= 0 ; i--){
+        StringBuilder sb = new StringBuilder();
 
-            if((int)(N.charAt(i)) >= 58){
-                num += ((int)N.charAt(i) - 55)*Math.pow(B,N.length() - 1 - i);
-            }else{
-                num += ((int)N.charAt(i) - 48)*Math.pow(B,N.length() - 1 - i);
+        for(int i = str.length() - 1 ; i >= 0 ; i--){
+
+            sum += Math.pow(2,cnt)*Character.getNumericValue(str.charAt(i));
+
+            if( cnt % 2 == 0 && cnt != 0){
+                sb.append(sum);
+                sum = 0;
+                cnt = 0;
+                continue;
             }
+            cnt++;
         }
 
-        System.out.println(num);
+        if(sum != 0)
+            sb.append(sum);
 
-
+        System.out.print(sb.reverse());
     }
 
 }
