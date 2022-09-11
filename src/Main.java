@@ -7,32 +7,22 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int str1 = 'A';
+        int str2 = 'B';
 
-        String str = br.readLine();
+        String ans = "";
+        //ff
 
-        int cnt = 0;
-        int sum = 0;
 
-        StringBuilder sb = new StringBuilder();
+        ans += 'A';
 
-        for(int i = str.length() - 1 ; i >= 0 ; i--){
+        HashMap<Character, Integer> map = new HashMap<>();
 
-            sum += Math.pow(2,cnt)*Character.getNumericValue(str.charAt(i));
+        char mbti = 'c';
+        map.put(mbti,1);
 
-            if( cnt % 2 == 0 && cnt != 0){
-                sb.append(sum);
-                sum = 0;
-                cnt = 0;
-                continue;
-            }
-            cnt++;
-        }
-
-        if(sum != 0)
-            sb.append(sum);
-
-        System.out.print(sb.reverse());
+        System.out.print(str1);
+        System.out.print('A' < 'B');
     }
 
 }
