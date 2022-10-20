@@ -16,13 +16,15 @@ public class Main {
 
         while( lt < rt){
 
-            if(Character.isAlphabetic(arr[lt])) {
+            if(!Character.isAlphabetic(arr[lt]))    lt++;
+            else if(!Character.isAlphabetic(arr[rt]))   rt--;
+            else{
                 char tmp = arr[lt];
                 arr[lt] = arr[rt];
                 arr[rt] = tmp;
+                lt++;
+                rt--;
             }
-            lt++;
-            rt--;
         }
 
 
