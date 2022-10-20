@@ -9,27 +9,20 @@ public class Main {
 
 
         String str = in.next();
+        String ans = "";
 
-        char[] arr = str.toCharArray();
+        for(int i = 0 ; i < str.length() ; i++){
 
-        int lt = 0 , rt = arr.length - 1;
-
-        while( lt < rt){
-
-            if(!Character.isAlphabetic(arr[lt]))    lt++;
-            else if(!Character.isAlphabetic(arr[rt]))   rt--;
-            else{
-                char tmp = arr[lt];
-                arr[lt] = arr[rt];
-                arr[rt] = tmp;
-                lt++;
-                rt--;
+            if( i == str.indexOf(str.charAt(i))){
+                ans += str.charAt(i);
             }
+
         }
 
 
 
-        System.out.println(new String(arr));
+
+        System.out.println(ans);
 
         return ;
     }
