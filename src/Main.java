@@ -6,18 +6,28 @@ public class Main {
 
         Scanner in=new Scanner(System.in);
         StringBuilder sb = new StringBuilder();
-        int N = in.nextInt();
 
-        while(N-->0){
-            String str = in.next();
-            String ans = "";
-            for(int i = str.length()-1 ; i >= 0 ; i--){
-                sb.append(str.charAt(i));
+
+        String str = in.next();
+
+        char[] arr = str.toCharArray();
+
+        int lt = 0 , rt = arr.length - 1;
+
+        while( lt < rt){
+
+            if(Character.isAlphabetic(arr[lt])) {
+                char tmp = arr[lt];
+                arr[lt] = arr[rt];
+                arr[rt] = tmp;
             }
-            sb.append("\n");
+            lt++;
+            rt--;
         }
 
-        System.out.println(sb);
+
+
+        System.out.println(new String(arr));
 
         return ;
     }
