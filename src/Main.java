@@ -6,19 +6,18 @@ public class Main {
         Scanner in=new Scanner(System.in);
 
         String str1 = in.next();
-        char str2 = in.next().charAt(0);
 
-        str1 = str1.toLowerCase();
-        str2 = Character.toLowerCase(str2);
-
-        int cnt = 0;
-
+        String ans = "";
         for(int i = 0 ; i < str1.length() ; i++){
-            if(str1.charAt(i) == str2)
-                cnt++;
+            if(Character.isLowerCase(str1.charAt(i))){
+                ans += Character.toUpperCase(str1.charAt(i));
+            }else{
+                ans += Character.toLowerCase(str1.charAt(i));
+            }
         }
 
-        System.out.println(cnt);
+
+        System.out.println(ans);
 
         return ;
     }
