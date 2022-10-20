@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class Main {
     public static void main(String[] args){
@@ -7,12 +8,15 @@ public class Main {
 
         String str1 = in.next();
 
+        String[] arr = str1.split(" ");
+
+        int max = 0;
         String ans = "";
-        for(int i = 0 ; i < str1.length() ; i++){
-            if(Character.isLowerCase(str1.charAt(i))){
-                ans += Character.toUpperCase(str1.charAt(i));
-            }else{
-                ans += Character.toLowerCase(str1.charAt(i));
+
+        for(String str = arr){
+            if(max < str.length()){
+                ans = str;
+                max = str.length();
             }
         }
 
