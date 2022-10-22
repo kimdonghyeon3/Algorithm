@@ -6,13 +6,40 @@ public class Main {
 
         Scanner in=new Scanner(System.in);
 
-        String str = in.nextLine();
+        String s = in.next();
+        char t = in.next().toCharArray()[0];
 
-        str = str.replaceAll("[^0-9]","");
+        int[] arr = new int[s.length()];
+        int dist = 1000;
 
-        int temp = Integer.parseInt(str);
+        for(int i = 0 ; i < s.length() ; i++){
+            if(s.charAt(i) == t){
+                dist = 0;
+                arr[i] = dist;
 
-        System.out.println(temp);
+            }else{
+                dist++;
+                arr[i] = dist;
+            }
+        }
+
+        dist = 1000;
+        for(int i = s.length()-1 ; i >= 0  ; i--){
+            if(s.charAt(i) == t){
+                dist = 0;
+                arr[i] = dist;
+            }else{
+                dist++;
+                arr[i] = Math.min(dist, arr[i]);
+            }
+        }
+
+        for(int temp : arr){
+            System.out.print(temp + " ");
+        }
+
+
+
 
         return ;
     }
