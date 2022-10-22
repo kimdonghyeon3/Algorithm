@@ -6,38 +6,27 @@ public class Main {
 
         Scanner in=new Scanner(System.in);
 
-        String s = in.next();
-        char t = in.next().toCharArray()[0];
+        String str = in.next();
 
-        int[] arr = new int[s.length()];
-        int dist = 1000;
+        String ans = String.valueOf(str.charAt(0));
 
-        for(int i = 0 ; i < s.length() ; i++){
-            if(s.charAt(i) == t){
-                dist = 0;
-                arr[i] = dist;
+        int cnt = 1;
 
+        for(int i = 1 ; i < str.length() ; i++){
+
+            if( str.charAt(i) == str.charAt(i-1)){
+                cnt++;
             }else{
-                dist++;
-                arr[i] = dist;
+                ans += cnt;
+
+                ans += str.charAt(i);
+                cnt = 1;
             }
         }
 
-        dist = 1000;
-        for(int i = s.length()-1 ; i >= 0  ; i--){
-            if(s.charAt(i) == t){
-                dist = 0;
-                arr[i] = dist;
-            }else{
-                dist++;
-                arr[i] = Math.min(dist, arr[i]);
-            }
-        }
+        if(cnt != 1) ans += cnt;
 
-        for(int temp : arr){
-            System.out.print(temp + " ");
-        }
-
+        System.out.println(ans.replaceAll("1",""));
 
 
 
