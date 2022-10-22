@@ -9,15 +9,16 @@ public class Main {
         int N = Integer.parseInt(in.nextLine());
 
         String[] strArr = in.nextLine().split(" ");
-        String ans = "";
 
-        ans += strArr[0] + " ";
+        int max = 0, ans = 0;
 
-        for(int i = 1 ; i < strArr.length ; i++){
-            if(Integer.parseInt(strArr[i-1]) < Integer.parseInt(strArr[i])){
-                ans += strArr[i] + " ";
+        for(int i = 0 ; i < strArr.length ; i++){
+            if(max < Integer.parseInt(strArr[i])){
+                max = Integer.parseInt(strArr[i]);
+                ans++;
             }
         }
+
 
 
 
