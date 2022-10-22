@@ -8,15 +8,11 @@ public class Main {
 
         String str = in.nextLine();
 
-        str = str.toLowerCase().replaceAll("[^a-z]","");
-        String str1 = new StringBuilder(str).reverse().toString();
+        str = str.replaceAll("[^0-9]","");
 
-        if(str.equals(str1)) {
-            System.out.println("YES");
-            return;
-        }
+        int temp = Integer.parseInt(str);
 
-        System.out.println("NO");
+        System.out.println(temp);
 
         return ;
     }
