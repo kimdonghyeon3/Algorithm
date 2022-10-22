@@ -7,20 +7,23 @@ public class Main {
         Scanner in=new Scanner(System.in);
 
         int N = Integer.parseInt(in.nextLine());
+        String[] a = in.nextLine().split(" ");
+        String[] b = in.nextLine().split(" ");
 
-        String[] strArr = in.nextLine().split(" ");
+        String ans = "";
 
-        int max = 0, ans = 0;
+        for(int i = 0 ; i < N ; i++){
+            if(a[i].equals(b[i])){
+                ans += "D\n";
+            }else if(a[i].equals("1") && b[i].equals("3")){
+                ans += "A\n";
+            }else if(a[i].equals("2") && b[i].equals("1")){
+                ans += "A\n";
+            }else if(a[i].equals("3") && b[i].equals("2")){
+                ans += "A\n";
+            }else ans+="B\n";
 
-        for(int i = 0 ; i < strArr.length ; i++){
-            if(max < Integer.parseInt(strArr[i])){
-                max = Integer.parseInt(strArr[i]);
-                ans++;
-            }
         }
-
-
-
 
         System.out.println(ans);
 
