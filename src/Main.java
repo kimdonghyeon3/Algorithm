@@ -6,29 +6,27 @@ public class Main {
 
         Scanner in=new Scanner(System.in);
 
-        String str = in.next();
+        String a = in.nextLine();
+        String str = in.nextLine();
+        String ans = "";
 
-        String ans = String.valueOf(str.charAt(0));
+        int num = 0;
 
-        int cnt = 1;
+        for(int i = 0 ; i < str.length() ; i++){
 
-        for(int i = 1 ; i < str.length() ; i++){
 
-            if( str.charAt(i) == str.charAt(i-1)){
-                cnt++;
-            }else{
-                ans += cnt;
-
-                ans += str.charAt(i);
-                cnt = 1;
+            if(str.charAt(i) == '#'){
+                num += Math.pow(2, 6 - i%7)*1;
             }
+
+            if(i%7 == 6 && i != 0){
+                ans += (char)num;
+                num = 0;
+            }
+
         }
 
-        if(cnt != 1) ans += cnt;
-
-        System.out.println(ans.replaceAll("1",""));
-
-
+        System.out.println(ans);
 
         return ;
     }
