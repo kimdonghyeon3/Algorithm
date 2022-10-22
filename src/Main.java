@@ -6,18 +6,17 @@ public class Main {
 
         Scanner in=new Scanner(System.in);
 
-        String str = in.next();
+        String str = in.nextLine();
 
-        str = str.toLowerCase();
+        str = str.toLowerCase().replaceAll("[^a-z]","");
+        String str1 = new StringBuilder(str).reverse().toString();
 
-        for(int i = 0 ; i < str.length()/2 ; i ++){
-            if(str.charAt(i) != str.charAt(str.length() - i - 1)){
-                System.out.println("NO");
-                return;
-            }
+        if(str.equals(str1)) {
+            System.out.println("YES");
+            return;
         }
 
-        System.out.println("YES");
+        System.out.println("NO");
 
         return ;
     }
