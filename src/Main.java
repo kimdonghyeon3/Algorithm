@@ -6,25 +6,20 @@ public class Main {
 
         Scanner in=new Scanner(System.in);
 
-        String a = in.nextLine();
-        String str = in.nextLine();
+        int N = Integer.parseInt(in.nextLine());
+
+        String[] strArr = in.nextLine().split(" ");
         String ans = "";
 
-        int num = 0;
+        ans += strArr[0] + " ";
 
-        for(int i = 0 ; i < str.length() ; i++){
-
-
-            if(str.charAt(i) == '#'){
-                num += Math.pow(2, 6 - i%7)*1;
+        for(int i = 1 ; i < strArr.length ; i++){
+            if(Integer.parseInt(strArr[i-1]) < Integer.parseInt(strArr[i])){
+                ans += strArr[i] + " ";
             }
-
-            if(i%7 == 6 && i != 0){
-                ans += (char)num;
-                num = 0;
-            }
-
         }
+
+
 
         System.out.println(ans);
 
