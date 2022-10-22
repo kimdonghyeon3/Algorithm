@@ -5,24 +5,19 @@ public class Main {
     public static void main(String[] args){
 
         Scanner in=new Scanner(System.in);
-        StringBuilder sb = new StringBuilder();
-
 
         String str = in.next();
-        String ans = "";
 
-        for(int i = 0 ; i < str.length() ; i++){
+        str = str.toLowerCase();
 
-            if( i == str.indexOf(str.charAt(i))){
-                ans += str.charAt(i);
+        for(int i = 0 ; i < str.length()/2 ; i ++){
+            if(str.charAt(i) != str.charAt(str.length() - i - 1)){
+                System.out.println("NO");
+                return;
             }
-
         }
 
-
-
-
-        System.out.println(ans);
+        System.out.println("YES");
 
         return ;
     }
