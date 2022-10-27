@@ -9,34 +9,41 @@ public class Main {
 
         int N = Integer.parseInt(in.nextLine());
 
-        int[][] arr = new int[N][N];
+        int[][] arr = new int[N+2][N+2];
 
-        int max = 0;
+        int[] movex = {1,0,0,-1};
+        int[] movey = {0,1,-1,0};
 
-        for(int i = 0 ; i < N ; i++){
-            int sum = 0;
-            for(int j = 0 ; j < N ; j++) {
+        int ans = 0;
+
+        for(int i = 1 ; i <= N ; i++){
+            for(int j = 1 ; j <= N ; j++) {
                 arr[i][j] = Integer.parseInt(in.next());
-                sum += arr[i][j];
             }
-            max = Math.max(max, sum);
         }
 
-        for(int i = 0 ; i < N ; i++){
-            int sum = 0;
-            for(int j = 0 ; j < N ; j++) {
-                sum += arr[j][i];
+        for(int i = 1 ; i <= N ; i++){
+            for(int j = 1 ; j <= N ; j++) {
+
+                boolean check = true;
+
+                for(int k = 0 ; k < 4 ; k++){
+                    int x = i + movex[k];
+                    int y = j + movey[k];
+                    if(arr[i][j] <= arr[x][y]){
+                        check = false;
+                        break;
+                    }
+                }
+
+                if(check){
+                    ans++;
+                }
+
             }
-            max = Math.max(max, sum);
         }
 
-        int sum = 0;
 
-        for(int i = 0 ; i < N ; i++){
-            sum += arr[i][i];
-        }
-        max = Math.max(max, sum);
-
-        System.out.println(max);
+        System.out.println(ans);
     }
 }
