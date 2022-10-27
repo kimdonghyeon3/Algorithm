@@ -9,27 +9,34 @@ public class Main {
 
         int N = Integer.parseInt(in.nextLine());
 
-        StringBuilder sb = new StringBuilder();
+        int[][] arr = new int[N][N];
 
-        int[] arr = new int[N];
+        int max = 0;
 
         for(int i = 0 ; i < N ; i++){
-            arr[i] = Integer.parseInt(in.next());
-        }
-
-        for(int i = 0 ; i  < arr.length  ; i++){
-            int num = 1;
-            for(int j = 0 ; j < arr.length ; j++){
-                if(arr[i] < arr[j]){
-                    num++;
-                }
+            int sum = 0;
+            for(int j = 0 ; j < N ; j++) {
+                arr[i][j] = Integer.parseInt(in.next());
+                sum += arr[i][j];
             }
-            sb.append(num + " ");
+            max = Math.max(max, sum);
         }
 
+        for(int i = 0 ; i < N ; i++){
+            int sum = 0;
+            for(int j = 0 ; j < N ; j++) {
+                sum += arr[j][i];
+            }
+            max = Math.max(max, sum);
+        }
 
+        int sum = 0;
 
+        for(int i = 0 ; i < N ; i++){
+            sum += arr[i][i];
+        }
+        max = Math.max(max, sum);
 
-        System.out.println(sb);
+        System.out.println(max);
     }
 }
