@@ -1,4 +1,5 @@
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
@@ -8,24 +9,27 @@ public class Main {
 
         int N = Integer.parseInt(in.nextLine());
 
-        String[] arr = new String[N];
+        StringBuilder sb = new StringBuilder();
+
+        int[] arr = new int[N];
 
         for(int i = 0 ; i < N ; i++){
-            arr[i] = in.next();
+            arr[i] = Integer.parseInt(in.next());
         }
 
-        int w = 1;
-        int ans = 0;
-
-        for(int i = 0 ; i < arr.length ; i++){
-            if(arr[i].equals("1")){
-                ans += w;
-                w ++;
-            }else{
-                w = 1;
+        for(int i = 0 ; i  < arr.length  ; i++){
+            int num = 1;
+            for(int j = 0 ; j < arr.length ; j++){
+                if(arr[i] < arr[j]){
+                    num++;
+                }
             }
+            sb.append(num + " ");
         }
 
-        System.out.println(ans);
+
+
+
+        System.out.println(sb);
     }
 }
