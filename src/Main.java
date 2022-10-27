@@ -8,32 +8,24 @@ public class Main {
 
         int N = Integer.parseInt(in.nextLine());
 
-        StringBuilder ans = new StringBuilder();
+        String[] arr = new String[N];
 
         for(int i = 0 ; i < N ; i++){
-            StringBuilder sb = new StringBuilder();
-            int num = Integer.parseInt(sb.append(in.next()).reverse().toString());
+            arr[i] = in.next();
+        }
 
-            if(isPrime(num)){
-                ans.append(num + " ");
+        int w = 1;
+        int ans = 0;
+
+        for(int i = 0 ; i < arr.length ; i++){
+            if(arr[i].equals("1")){
+                ans += w;
+                w ++;
+            }else{
+                w = 1;
             }
-
         }
 
         System.out.println(ans);
     }
-
-    private static boolean isPrime(int num) {
-
-        if(num <= 1)
-            return false;
-
-        for (int i = 2; i<=(int)Math.sqrt(num); i++) {
-            if (num % i == 0) {
-                return false;
-            }
-        }
-        return true;
-    }
-
 }
