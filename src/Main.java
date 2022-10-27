@@ -10,18 +10,26 @@ public class Main {
 
         int N = Integer.parseInt(in.nextLine());
 
-        List<Integer> list = new ArrayList<>();
+        int ans = 0;
 
-        list.add(1);
-        list.add(1);
-
-        for(int i = 2 ; i < N ; i++){
-            list.add(list.get(i-1) + list.get(i-2));
+        for(int i=2; i<=N; i++){
+            // prime[i]가 소수라면
+            if(isPrime(i)){
+                ans++;
+            }
         }
 
-        for(int i = 0 ; i < list.size() ; i++){
-            System.out.print(list.get(i) + " ");
-        }
-
+        System.out.println(ans);
     }
+
+    private static boolean isPrime(int num) {
+
+        for (int i = 2; i<=(int)Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
 }
