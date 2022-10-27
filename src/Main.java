@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.StringTokenizer;
 
@@ -7,26 +9,19 @@ public class Main {
         Scanner in=new Scanner(System.in);
 
         int N = Integer.parseInt(in.nextLine());
-        String[] a = in.nextLine().split(" ");
-        String[] b = in.nextLine().split(" ");
 
-        String ans = "";
+        List<Integer> list = new ArrayList<>();
 
-        for(int i = 0 ; i < N ; i++){
-            if(a[i].equals(b[i])){
-                ans += "D\n";
-            }else if(a[i].equals("1") && b[i].equals("3")){
-                ans += "A\n";
-            }else if(a[i].equals("2") && b[i].equals("1")){
-                ans += "A\n";
-            }else if(a[i].equals("3") && b[i].equals("2")){
-                ans += "A\n";
-            }else ans+="B\n";
+        list.add(1);
+        list.add(1);
 
+        for(int i = 2 ; i < N ; i++){
+            list.add(list.get(i-1) + list.get(i-2));
         }
 
-        System.out.println(ans);
+        for(int i = 0 ; i < list.size() ; i++){
+            System.out.print(list.get(i) + " ");
+        }
 
-        return ;
     }
 }
